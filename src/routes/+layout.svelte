@@ -1,14 +1,23 @@
 <script>
-    import Footer from '../components/Footer.svelte';
+	import favicon from '$lib/assets/favicon.svg';
+    import Footer from '$lib/components/Footer.svelte';
+
+	let { children } = $props();
 </script>
+
+<svelte:head>
+	<link rel="icon" href={favicon} />
+</svelte:head>
+
 <nav>
     <a href="/">Home</a>
     <a sveltekit:prefetch href="/about">About</a>
 </nav>
 
 <main>
-    <slot />
+{@render children?.()}
 </main>
+
 <Footer author="Wahhab Baldwin"></Footer>
 
 <style >
